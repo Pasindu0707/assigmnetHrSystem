@@ -55,3 +55,14 @@
 20250304	23:56:49	ef68ee57-fe9b-4de4-bd9f-a3c338259d5e	POST	/api/employees	undefined
 20250304	23:57:02	8321577b-d18c-4853-925c-e43ac4a06e15	GET	/api/employees/search?query=name	undefined
 20250304	23:57:15	7f334983-f01b-436e-be72-aab343d29530	GET	/api/employees	undefined
+20250305	00:47:04	fcc9bff3-dc77-4a27-8dbe-4bced3a50ad4	GET	/api/employees	undefined
+20250305	00:47:16	d261d5d2-0488-47cd-97dc-cd81288c0c81	DELETE	/api/employees/67c74294be2acd8d165e24b9	undefined
+20250305	00:47:27	e410c6bb-7740-45b0-9b7e-7c6a2f0456ea	DELETE	/api/employees/67c745c2be2acd8d165e24c4	undefined
+20250305	00:47:38	72b3d389-e8c0-4b8a-9bc2-657fe986421c	DELETE	/api/employees/67c745e9be2acd8d165e24c7	undefined
+20250305	00:47:42	4ce2e5d1-a2c7-4751-b23e-57b59b03c7e9	GET	/api/employees	undefined
+20250305	00:48:09	647544bd-5ea4-4b69-96f7-c92734b0bba7	POST	/api/employees	undefined
+20250305	00:48:20	e9c43f3d-0747-4ba2-ac4d-f20807978c09	GET	/api/departments	undefined
+20250305	00:48:31	681ad748-70ce-493d-81f9-90dc3346d4ab	POST	/api/employees	undefined
+20250305	00:49:00	99bb9a9a-fe48-4124-9ed1-a241560558e0	POST	/api/employees	undefined
+20250305	00:49:09	e907d854-837c-4974-a35e-2c9eca1aad4f	POST	/api/employees	undefined
+20250305	00:50:01	6dc861ca-01b3-4e47-9fbd-8dba23d672bd	POST	/api/employees	undefined

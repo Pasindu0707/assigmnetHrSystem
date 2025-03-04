@@ -1,26 +1,27 @@
 import Employee from "../../models/Employee.js";
 import Department from "../../models/Department.js";
 import ActivityLog from "../../models/ActivityLog.js";
-import upload from "../../middleware/upload.js";
 
+// Create a new employee
 export const createEmployee = async (req, res) => {
     try {
         const { name, job_title, department, status } = req.body;
-        const profilePicture = req.file ? req.file.filename : null;
 
+        // Validate department
         const departmentExists = await Department.findById(department);
         if (!departmentExists) {
             return res.status(404).json({ error: "Department not found" });
         }
 
-        const employee = new Employee({ name, job_title, department, status, profilePicture });
+        // Create employee (without profile picture)
+        const employee = new Employee({ name, job_title, department, status });
         await employee.save();
+
         res.status(201).json(employee);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 // Edit employee details
 export const updateEmployee = async (req, res) => {
@@ -49,7 +50,6 @@ export const updateEmployee = async (req, res) => {
     }
 };
 
-
 // Remove an employee & log deletion
 export const deleteEmployee = async (req, res) => {
     try {
@@ -73,7 +73,6 @@ export const deleteEmployee = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 // Get all employees
 export const getEmployees = async (req, res) => {
@@ -101,6 +100,7 @@ export const searchEmployees = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
 // Get all activity logs
 export const getActivityLogs = async (req, res) => {
     try {

@@ -17,9 +17,6 @@ const EmployeeSchema = new mongoose.Schema({
         type: String, 
         enum: ["Active", "Inactive"], 
         default: "Active"
-    },
-    profilePicture: {
-        type: String
     }
 }, 
 { timestamps: true });

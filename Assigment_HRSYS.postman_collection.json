@@ -241,38 +241,18 @@
 							{
 								"key": "Content-Type",
 								"value": "multipart/form-data",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Fernando",
-									"type": "text"
-								},
-								{
-									"key": "job_title",
-									"value": "Software Engineer",
-									"type": "text"
-								},
-								{
-									"key": "department",
-									"value": "67c73bbeba19edd6fff1d60e",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Active",
-									"type": "text"
-								},
-								{
-									"key": "profilePicture",
-									"type": "file",
-									"src": []
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fernando\",\r\n    \"job_title\": \"SE\",\r\n    \"department\": \"67c73b6c0d80010574dee14a\",\r\n    \"status\": \"Active\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:3500/api/employees",
@@ -375,7 +355,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3500/api/employees/67c741e8be2acd8d165e24a9",
+							"raw": "http://localhost:3500/api/employees/67c745e9be2acd8d165e24c7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -384,7 +364,7 @@
 							"path": [
 								"api",
 								"employees",
-								"67c741e8be2acd8d165e24a9"
+								"67c745e9be2acd8d165e24c7"
 							]
 						}
 					},

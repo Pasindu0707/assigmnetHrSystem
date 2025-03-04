@@ -46,7 +46,6 @@ import logoutRoutes from './routes/logout.js';
 import employeeRoutes from "./routes/employeeRoutes.js";
 import departmentRoutes from "./routes/departmentRoutes.js";
 import activityLogRoutes from "./routes/activityLogRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -61,7 +60,6 @@ app.use('/logout', logoutRoutes); // logout
 app.use("/api/employees", employeeRoutes);
 app.use("/api/departments", departmentRoutes);
 app.use("/api/activity-logs", activityLogRoutes);
-app.use("/api/uploads", uploadRoutes);
 
 // 404
 app.get('*', (req, res) => {

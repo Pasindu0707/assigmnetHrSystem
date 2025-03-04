@@ -7,12 +7,11 @@ import {
     searchEmployees,
     getActivityLogs
 } from "../controllers/CRUD/employeeController.js";
-import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
-// Create an employee with profile picture upload
-router.post("/", upload.single("profilePicture"), createEmployee);
+// Create an employee
+router.post("/", createEmployee);
 
 // Edit an employee
 router.put("/:id", updateEmployee);
