@@ -66,3 +66,9 @@
 20250305	00:49:00	99bb9a9a-fe48-4124-9ed1-a241560558e0	POST	/api/employees	undefined
 20250305	00:49:09	e907d854-837c-4974-a35e-2c9eca1aad4f	POST	/api/employees	undefined
 20250305	00:50:01	6dc861ca-01b3-4e47-9fbd-8dba23d672bd	POST	/api/employees	undefined
+20250305	12:44:31	b08a248b-bbb5-4a87-9d23-550c98bcb7d7	POST	/auth	undefined
+20250305	12:44:50	ff9b197d-cf1d-4281-b48a-00b784059fb9	GET	/api/employees	undefined
+20250305	12:45:12	e039a6d2-dde2-4e2c-bd4a-2b3c33c9cabe	GET	/api/employees	undefined
+20250305	12:45:17	f7ea2b15-a3cf-4cbe-9973-19fea3bc8771	POST	/auth	undefined
+20250305	12:45:33	87cdaffc-0b65-4818-9e61-b33c74449ece	GET	/api/employees	undefined
+20250305	12:45:38	399c733d-0392-4f4d-9761-49a2079d29c5	GET	/api/employees	undefined

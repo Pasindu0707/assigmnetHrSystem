@@ -15,8 +15,6 @@ import credentials from './middleware/credentials.js';
 const __dirname = path.resolve()
 
 const app = express();
-app.use(express.static(path.join(__dirname,'/client/dist')))
-
 const PORT = process.env.PORT || 3500;
 
 // Database connection
@@ -31,13 +29,13 @@ app.use(credentials);
 // CORS
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
+
 // Adding middleware
-// app.use(express.urlencoded({ extended: false })); // to get form data to res body
-app.use(express.json()); // to get json data
+app.use(express.json());
 app.use(cookieParser());
 
 
-// // Using the routes with ES modules
+//Importing the routes
 import subdirRoutes from './routes/subdir.js';
 import adminRegisterRoutes from './routes/adminRegister.js';
 import authRoutes from './routes/auth.js'; 
@@ -47,16 +45,14 @@ import employeeRoutes from "./routes/employeeRoutes.js";
 import departmentRoutes from "./routes/departmentRoutes.js";
 import activityLogRoutes from "./routes/activityLogRoutes.js";
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
 app.use('/', subdirRoutes);
-app.use('/register', adminRegisterRoutes);
+app.use('/register', adminRegisterRoutes); //register a HR manager
 app.use('/auth', authRoutes); // login
 app.use('/refresh', refreshRoutes); // Refresh
 app.use('/logout', logoutRoutes); // logout
 
 
-// app.use(verifyJWT);
+app.use(verifyJWT); //without JWT token can't access the below 
 app.use("/api/employees", employeeRoutes);
 app.use("/api/departments", departmentRoutes);
 app.use("/api/activity-logs", activityLogRoutes);
