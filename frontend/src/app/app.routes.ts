@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { EmployeeManagementComponent } from './pages/employee-management/employee-management.component';
 import { DepartmentManagementComponent } from './pages/department-management/department-management.component';
 import { authGuard } from './guards/auth.guard';
+import { ActivityLogComponent } from './pages/activity-log/activity-log.component'
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'employees', component: EmployeeManagementComponent, canActivate: [authGuard] },
   { path: 'departments', component: DepartmentManagementComponent, canActivate: [authGuard] },
+  { path: 'activityLog', component: ActivityLogComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: 'login' }
 ];

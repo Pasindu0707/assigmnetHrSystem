@@ -1,0 +1,23 @@
+<div class="dialog-container">
+    <h2>{{ actionType === 'add' ? 'Add Department' : 'Manage Department' }}</h2>
+  
+    <!-- Department Name -->
+    <label>Department Name:</label>
+    <input type="text" [(ngModel)]="name" placeholder="Enter department name" required />
+  
+    <!-- Department Description -->
+    <label>Description:</label>
+    <textarea [(ngModel)]="description" placeholder="Enter description" required></textarea>
+  
+    <!-- Buttons -->
+    <div class="button-group">
+      <button (click)="saveDepartment()">{{ actionType === 'add' ? 'Add Department' : 'Update Department' }}</button>
+  
+      <button *ngIf="actionType === 'manage'" (click)="deleteDepartment()" class="delete-btn">
+        Delete Department
+      </button>
+  
+      <button (click)="closeDialog()">Cancel</button>
+    </div>
+  </div>
+  

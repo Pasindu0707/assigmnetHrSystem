@@ -1,0 +1,63 @@
+<div class="page-container">
+    <button class="back-btn" routerLink="/home">Back to Home</button>
+    <h1>Employee Activity Logs</h1>
+    <p>Track all changes made to employees.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Employee Name</th>
+                    <th>Job Title</th>
+                    <th>Department</th>
+                    <th>Timestamp</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of activityLogs">
+                    <td>{{ log.action }}</td>
+                    <td>
+                        {{ log.changes?.before?.name || log.changes?.after?.name || 'Unknown' }}
+                    </td>
+                    <td>
+                        {{ log.changes?.before?.job_title || log.changes?.after?.job_title || 'N/A' }}
+                    </td>
+                    <td>
+                        {{ log.changes?.before?.department || log.changes?.after?.department || 'N/A' }}
+                    </td>
+                    <td>{{ log.timestamp | date:'medium' }}</td>
+                    <td>
+                        <button class="details-btn" (click)="toggleDetails(log)">View Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Expanded details section -->
+    <div *ngIf="selectedLog" class="details-container">
+        <h3>Change Details</h3>
+        <p><strong>Action:</strong> {{ selectedLog.action }}</p>
+        <p><strong>Timestamp:</strong> {{ selectedLog.timestamp | date:'medium' }}</p>
+
+        <div *ngIf="selectedLog.changes.before">
+            <h4>Before:</h4>
+            <p>Name: {{ selectedLog.changes.before.name }}</p>
+            <p>Job Title: {{ selectedLog.changes.before.job_title }}</p>
+            <p>Department: {{ selectedLog.changes.before.department }}</p>
+            <p>Status: {{ selectedLog.changes.before.status }}</p>
+        </div>
+
+        <div *ngIf="selectedLog.changes.after">
+            <h4>After:</h4>
+            <p>Name: {{ selectedLog.changes.after.name }}</p>
+            <p>Job Title: {{ selectedLog.changes.after.job_title }}</p>
+            <p>Department: {{ selectedLog.changes.after.department }}</p>
+            <p>Status: {{ selectedLog.changes.after.status }}</p>
+        </div>
+
+        <button class="close-details-btn" (click)="closeDetails()">Close</button>
+    </div>
+</div>

@@ -1,7 +1,48 @@
 <div class="page-container">
-    <h1>Department Management</h1>
-    <p>Manage your departments from this panel.</p>
-  
-    <button class="back-btn" routerLink="/home">Back to Home</button>
+  <h1>Department Management</h1>
+  <p>Manage your departments from this panel.</p>
+
+  <!-- Search Bar & Add Button -->
+  <div class="search-container">
+      <input 
+          type="text" 
+          placeholder="Search department by name..." 
+          [(ngModel)]="searchQuery"
+          (input)="onSearchChange()"
+      />
+      <button class="add-department-btn" (click)="openDepartmentDialog(null, 'add')">Add Department</button>
   </div>
-  
+
+  <!-- Department Table -->
+  <div class="table-container">
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let department of paginatedDepartments">
+                  <td>{{ department.name }}</td>
+                  <td>{{ department.description }}</td>
+                  <td>
+                      <button class="manage-department-btn" (click)="openDepartmentDialog(department, 'manage')">
+                          Manage Department
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <button class="back-btn" routerLink="/home">Back to Home</button>
+</div>

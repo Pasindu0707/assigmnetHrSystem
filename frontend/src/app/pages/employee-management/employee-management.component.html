@@ -2,16 +2,18 @@
     <h1>Employee Management</h1>
     <p>Manage your employees from this panel.</p>
 
-    <!-- Search Bar with Add Employee Button -->
+    <!-- Search Bar with Add Employee & Activity Logs Button -->
     <div class="search-container">
-        <button class="add-employee-btn" (click)="openEmployeeDialog(null, 'add')">Add Employee</button>
+        <div class="button-group">
+            <button class="add-employee-btn" (click)="openEmployeeDialog(null, 'add')">Add Employee</button>
+            <button class="logs-btn" (click)="getEmployeeLogs()">Get Employee Activity Logs</button>
+        </div>
         <input 
             type="text" 
             placeholder="Search employee by name..." 
             [(ngModel)]="searchQuery"
             (input)="onSearchChange()"
         />
-       
     </div>
 
     <!-- Employee Table -->

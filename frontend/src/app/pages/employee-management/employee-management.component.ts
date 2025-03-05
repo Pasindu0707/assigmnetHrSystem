@@ -113,4 +113,8 @@ export class EmployeeManagementComponent {
   navigateToHome() {
     this.router.navigate(['/home']);
   }
+  getEmployeeLogs() {
+    this.router.navigate(['/activityLog']);  
+  }
+
 }
