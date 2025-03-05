@@ -1,7 +1,11 @@
 <div class="home-container">
-    <h1>Welcome to HR System</h1>
-    <p>You are successfully logged in!</p>
-    
-    <button (click)="logout()">Logout</button>
+  <button class="logout-btn" (click)="logout()">Logout</button>
+
+  <h1>Welcome to HR System</h1>
+  <p>You are successfully logged in!</p>
+
+  <div class="button-group">
+    <button class="big-button" (click)="navigateToEmployees()">Employee Management</button>
+    <button class="big-button" (click)="navigateToDepartments()">Department Management</button>
   </div>
-  
+</div>

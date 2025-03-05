@@ -10,8 +10,16 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router) {}
 
+  navigateToEmployees() {
+    this.router.navigate(['/employees']);
+  }
+
+  navigateToDepartments() {
+    this.router.navigate(['/departments']);
+  }
+
   logout() {
-    localStorage.removeItem('token'); // Remove token
-    this.router.navigate(['/login']); // Redirect to Login
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

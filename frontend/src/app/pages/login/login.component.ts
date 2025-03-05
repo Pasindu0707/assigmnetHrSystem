@@ -26,19 +26,24 @@ export class LoginComponent {
       this.errorMessage = 'Both fields are required!';
       return;
     }
-
+  
     const loginData = { user: this.username, pwd: this.password };
-
+  
     this.http.post<any>(this.apiUrl, loginData).subscribe(
       (response) => {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/home']);
+        if (response.accessToken) { 
+          localStorage.setItem('token', response.accessToken);
+          this.router.navigate(['/home']);
+        } else {
+          this.errorMessage = 'Login failed: No token received!';
+        }
       },
       (error) => {
         this.errorMessage = 'Invalid username or password!';
       }
     );
   }
+  
 
   onReset() {
     this.username = '';

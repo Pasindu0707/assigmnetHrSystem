@@ -1,0 +1,35 @@
+<div class="dialog-container">
+  <h2>{{ actionType === 'add' ? 'Add Employee' : 'Manage Employee' }}</h2>
+
+  <!-- Employee Name -->
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="name" placeholder="Enter employee name" required />
+
+  <!-- Job Title -->
+  <label>Job Title:</label>
+  <input type="text" [(ngModel)]="jobTitle" placeholder="Enter job title" required />
+
+  <!-- Department Dropdown -->
+  <label>Department:</label>
+  <select [(ngModel)]="departmentId">
+    <option *ngFor="let dept of departments" [value]="dept._id">{{ dept.name }}</option>
+  </select>
+
+  <!-- Status -->
+  <label>Status:</label>
+  <select [(ngModel)]="status">
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+  </select>
+
+  <!-- Buttons -->
+  <div class="button-group">
+    <button (click)="saveEmployee()">{{ actionType === 'add' ? 'Add Employee' : 'Update Employee' }}</button>
+
+    <button *ngIf="actionType === 'manage'" (click)="deleteEmployee()" class="delete-btn">
+      Delete Employee
+    </button>
+
+    <button (click)="closeDialog()">Cancel</button>
+  </div>
+</div>

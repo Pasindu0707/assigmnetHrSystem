@@ -1,0 +1,53 @@
+<div class="page-container">
+    <h1>Employee Management</h1>
+    <p>Manage your employees from this panel.</p>
+
+    <!-- Search Bar with Add Employee Button -->
+    <div class="search-container">
+        <button class="add-employee-btn" (click)="openEmployeeDialog(null, 'add')">Add Employee</button>
+        <input 
+            type="text" 
+            placeholder="Search employee by name..." 
+            [(ngModel)]="searchQuery"
+            (input)="onSearchChange()"
+        />
+       
+    </div>
+
+    <!-- Employee Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job Title</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th> <!-- Column for Manage Button -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of paginatedEmployees">
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.job_title }}</td>
+                    <td>{{ employee.department.name }}</td>
+                    <td>{{ employee.status }}</td>
+                    <td>
+                        <button class="manage-employee-btn" (click)="openEmployeeDialog(employee, 'manage')">
+                            Manage Employee
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+
+    <button class="back-btn" (click)="navigateToHome()">Back to Home</button>
+</div>
