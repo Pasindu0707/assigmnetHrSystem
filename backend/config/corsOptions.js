@@ -1,5 +1,5 @@
 const corsOptions = {
-    origin: ['http://localhost8080'],
+    origin: ['http://localhost:4200'],
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   };

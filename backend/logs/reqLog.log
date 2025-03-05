@@ -72,3 +72,14 @@
 20250305	12:45:17	f7ea2b15-a3cf-4cbe-9973-19fea3bc8771	POST	/auth	undefined
 20250305	12:45:33	87cdaffc-0b65-4818-9e61-b33c74449ece	GET	/api/employees	undefined
 20250305	12:45:38	399c733d-0392-4f4d-9761-49a2079d29c5	GET	/api/employees	undefined
+20250306	01:34:38	317fb7bd-99d9-4098-b67d-bc2a6594a0ca	OPTIONS	/auth	http://localhost:4200
+20250306	01:35:45	9f1e52ee-e9a2-41c1-b73c-c5a54d5a791f	OPTIONS	/auth	http://localhost:4200
+20250306	01:37:25	ae40da2a-d385-4f2f-b612-5aa20f7245b8	OPTIONS	/auth	http://localhost:4200
+20250306	01:39:15	b8e33c1c-c3d4-4c4a-8627-7207eb46da79	OPTIONS	/auth	http://localhost:4200
+20250306	01:39:15	6fc527fc-a1c6-4cc6-85ae-36f020e727ff	POST	/auth	http://localhost:4200
+20250306	01:48:24	f0518e20-b1b7-468e-9f1c-83a9e18239b3	OPTIONS	/auth	http://localhost:4200
+20250306	01:48:24	ca641ac7-0960-4b6f-9fa0-93ed53ba65e1	POST	/auth	http://localhost:4200
+20250306	01:48:43	e2219525-c88f-4cbb-a04d-75724d12f1a5	OPTIONS	/auth	http://localhost:4200
+20250306	01:48:43	4b95c72a-910d-4497-a798-20dfc6dc5018	POST	/auth	http://localhost:4200
+20250306	01:48:52	d66f17cd-fa08-444c-b7c2-2c850d7c09a0	OPTIONS	/auth	http://localhost:4200
+20250306	01:48:52	7ac76cf7-ecea-4ddc-bab8-5e347659f81f	POST	/auth	http://localhost:4200

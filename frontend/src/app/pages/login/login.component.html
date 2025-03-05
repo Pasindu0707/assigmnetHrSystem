@@ -1,0 +1,22 @@
+<div class="login-container">
+    <h2>HR System Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="username" autocomplete="off" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" autocomplete="off" required />
+      </div>
+  
+      <div class="button-group">
+        <button type="submit">Login</button>
+        <button type="button" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
+  
