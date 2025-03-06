@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../app.config'; // ✅ Import the BASE_API_URL
+import { environment } from '../../app.config';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -19,23 +20,27 @@ export class LoginComponent {
 
   private apiUrl = `${environment.BASE_API_URL}/auth`; // ✅ Use the base API URL
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient,
+              private toastr: ToastrService,
+              private router: Router) {}
 
   onSubmit() {
     if (!this.username || !this.password) {
       this.errorMessage = 'Both fields are required!';
       return;
     }
-  
+
     const loginData = { user: this.username, pwd: this.password };
-  
+
     this.http.post<any>(this.apiUrl, loginData).subscribe(
       (response) => {
-        if (response.accessToken) { 
+        if (response.accessToken) {
+          // this.toastr.success('Login Successful!', 'Welcome');
           localStorage.setItem('token', response.accessToken);
           this.router.navigate(['/home']);
         } else {
-          this.errorMessage = 'Login failed: No token received!';
+          // this.toastr.error('Invalid username or password', 'Login Failed');
+          this.errorMessage = 'Invalid credentials. Please try again.';
         }
       },
       (error) => {
@@ -43,7 +48,7 @@ export class LoginComponent {
       }
     );
   }
-  
+
 
   onReset() {
     this.username = '';

@@ -9,32 +9,13 @@
   border-bottom: none;
 }
 
-/* Inputs & Textarea */
-.form-control {
-  border: 2px solid #97CADB; /* Light Blue */
-  transition: all 0.3s ease-in-out;
+/* Sections */
+.bg-light, .bg-success {
+  padding: 10px;
+  border-radius: 6px;
 }
 
-.form-control:focus {
-  border-color: #018ABE;
-  box-shadow: 0 0 5px rgba(1, 138, 190, 0.3);
-}
-
-/* Buttons */
-.btn-primary {
-  background-color: #001B48;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #02457A;
-}
-
-.btn-danger:hover {
-  background-color: #a71d2a;
-}
-
-/* Cancel Button */
+/* Close Button */
 .btn-secondary {
   background-color: #97CADB;
   color: #001B48;
@@ -42,6 +23,11 @@
 
 .btn-secondary:hover {
   background-color: #018ABE;
+}
+
+/* Icons */
+.bi {
+  margin-right: 5px;
 }
 
 /* Responsive Design */

@@ -1,23 +1,51 @@
-<div class="dialog-container">
-    <h2>{{ actionType === 'add' ? 'Add Department' : 'Manage Department' }}</h2>
-  
-    <!-- Department Name -->
-    <label>Department Name:</label>
-    <input type="text" [(ngModel)]="name" placeholder="Enter department name" required />
-  
-    <!-- Department Description -->
-    <label>Description:</label>
-    <textarea [(ngModel)]="description" placeholder="Enter description" required></textarea>
-  
-    <!-- Buttons -->
-    <div class="button-group">
-      <button (click)="saveDepartment()">{{ actionType === 'add' ? 'Add Department' : 'Update Department' }}</button>
-  
-      <button *ngIf="actionType === 'manage'" (click)="deleteDepartment()" class="delete-btn">
-        Delete Department
-      </button>
-  
-      <button (click)="closeDialog()">Cancel</button>
+<div class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
+
+      <!-- Modal Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-building"></i>
+          {{ actionType === 'add' ? 'Add Department' : 'Manage Department' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Department Name -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-tag"></i> Department Name</label>
+          <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter department name" required />
+        </div>
+
+        <!-- Department Description -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-pencil-square"></i> Description</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="description" placeholder="Enter description" required></textarea>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer (Buttons) -->
+      <div class="modal-footer d-flex justify-content-between">
+
+        <button class="btn btn-primary w-100" (click)="saveDepartment()">
+          <i class="bi bi-save"></i>
+          {{ actionType === 'add' ? 'Add Department' : 'Update Department' }}
+        </button>
+
+        <button *ngIf="actionType === 'manage'" class="btn btn-danger w-100 ms-2" (click)="deleteDepartment()">
+          <i class="bi bi-trash"></i> Delete
+        </button>
+
+        <button class="btn btn-secondary w-100 ms-2" (click)="closeDialog()">
+          <i class="bi bi-x-circle"></i> Cancel
+        </button>
+
+      </div>
+
     </div>
   </div>
-  
+</div>

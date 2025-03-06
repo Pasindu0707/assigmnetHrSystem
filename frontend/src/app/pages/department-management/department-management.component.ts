@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AddManageDepartmentComponent } from '../../dialogs/add-manage-department/add-manage-department.component';
 import { environment } from '../../app.config';
 
-
 @Component({
   selector: 'app-department-management',
   standalone: true,
@@ -19,17 +18,15 @@ export class DepartmentManagementComponent {
   private http = inject(HttpClient);
   private dialog = inject(MatDialog);
   departments: any[] = [];
+  filteredDepartments: any[] = [];
   searchQuery: string = '';
-  paginatedDepartments: any[] = [];
-  currentPage = 1;
-  pageSize = 5;
-  totalPages = 1;
 
   private apiUrl = `${environment.BASE_API_URL}/api/departments`;
 
   constructor() {
     this.fetchDepartments();
   }
+
   /** Get the authorization headers */
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
@@ -40,43 +37,23 @@ export class DepartmentManagementComponent {
       })
     };
   }
+
+  /** Fetch departments from API */
   fetchDepartments() {
-    this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {  
+    this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {
       this.departments = response;
-      this.updatePagination();
+      this.filteredDepartments = response; // Initialize filtered list
     });
   }
 
+  /** Filter departments based on search query */
   onSearchChange() {
-    this.currentPage = 1;
-    this.updatePagination();
-  }
-
-  updatePagination() {
-    const filtered = this.departments.filter((dept) =>
+    this.filteredDepartments = this.departments.filter(dept =>
       dept.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
-    this.totalPages = Math.ceil(filtered.length / this.pageSize);
-    this.paginatedDepartments = filtered.slice(
-      (this.currentPage - 1) * this.pageSize,
-      this.currentPage * this.pageSize
-    );
   }
 
-  prevPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.updatePagination();
-    }
-  }
-
-  nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.updatePagination();
-    }
-  }
-
+  /** Open the department dialog */
   openDepartmentDialog(department: any | null, action: string) {
     const dialogRef = this.dialog.open(AddManageDepartmentComponent, {
       width: '500px',

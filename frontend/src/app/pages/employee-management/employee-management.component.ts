@@ -22,6 +22,7 @@ export class EmployeeManagementComponent {
   pageSize: number = 5;
   totalPages: number = 1;
   searchTimeout: any;
+  totalEmployees: number = 0;
 
   private apiUrl = `${environment.BASE_API_URL}/api/employees`;
 
@@ -44,6 +45,7 @@ export class EmployeeManagementComponent {
   fetchEmployees() {
     this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {
       this.employees = response;
+      this.totalEmployees = response.length
       this.calculatePagination();
     });
   }
@@ -114,7 +116,7 @@ export class EmployeeManagementComponent {
     this.router.navigate(['/home']);
   }
   getEmployeeLogs() {
-    this.router.navigate(['/activityLog']);  
+    this.router.navigate(['/activityLog']);
   }
 
 }

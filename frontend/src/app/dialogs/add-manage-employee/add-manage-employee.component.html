@@ -1,35 +1,68 @@
-<div class="dialog-container">
-  <h2>{{ actionType === 'add' ? 'Add Employee' : 'Manage Employee' }}</h2>
+<div class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
 
-  <!-- Employee Name -->
-  <label>Name:</label>
-  <input type="text" [(ngModel)]="name" placeholder="Enter employee name" required />
+      <!-- Modal Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-person-plus"></i>
+          {{ actionType === 'add' ? 'Add Employee' : 'Manage Employee' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close"></button>
+      </div>
 
-  <!-- Job Title -->
-  <label>Job Title:</label>
-  <input type="text" [(ngModel)]="jobTitle" placeholder="Enter job title" required />
+      <!-- Modal Body -->
+      <div class="modal-body">
 
-  <!-- Department Dropdown -->
-  <label>Department:</label>
-  <select [(ngModel)]="departmentId">
-    <option *ngFor="let dept of departments" [value]="dept._id">{{ dept.name }}</option>
-  </select>
+        <!-- Employee Name -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-person"></i> Name</label>
+          <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter employee name" required />
+        </div>
 
-  <!-- Status -->
-  <label>Status:</label>
-  <select [(ngModel)]="status">
-    <option value="Active">Active</option>
-    <option value="Inactive">Inactive</option>
-  </select>
+        <!-- Job Title -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-briefcase"></i> Job Title</label>
+          <input type="text" class="form-control" [(ngModel)]="jobTitle" placeholder="Enter job title" required />
+        </div>
 
-  <!-- Buttons -->
-  <div class="button-group">
-    <button (click)="saveEmployee()">{{ actionType === 'add' ? 'Add Employee' : 'Update Employee' }}</button>
+        <!-- Department Dropdown -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-building"></i> Department</label>
+          <select class="form-select" [(ngModel)]="departmentId">
+            <option *ngFor="let dept of departments" [value]="dept._id">{{ dept.name }}</option>
+          </select>
+        </div>
 
-    <button *ngIf="actionType === 'manage'" (click)="deleteEmployee()" class="delete-btn">
-      Delete Employee
-    </button>
+        <!-- Status -->
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-toggle-on"></i> Status</label>
+          <select class="form-select" [(ngModel)]="status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
 
-    <button (click)="closeDialog()">Cancel</button>
+      </div>
+
+      <!-- Modal Footer (Buttons) -->
+      <div class="modal-footer d-flex justify-content-between">
+
+        <button class="btn btn-primary w-100" (click)="saveEmployee()">
+          <i class="bi bi-save"></i>
+          {{ actionType === 'add' ? 'Add Employee' : 'Update Employee' }}
+        </button>
+
+        <button *ngIf="actionType === 'manage'" class="btn btn-danger w-100 ms-2" (click)="deleteEmployee()">
+          <i class="bi bi-trash"></i> Delete
+        </button>
+
+        <button class="btn btn-secondary w-100 ms-2" (click)="closeDialog()">
+          <i class="bi bi-x-circle"></i> Cancel
+        </button>
+
+      </div>
+
+    </div>
   </div>
 </div>

@@ -1,99 +1,57 @@
-.dialog-container {
-  width: 100%;
-  max-width: 450px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* General Modal Styling */
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-h2 {
-  color: #333;
-  font-size: 20px;
-  margin-bottom: 15px;
+/* Header */
+.modal-header {
+  border-bottom: none;
 }
 
-label {
-  width: 100%;
-  text-align: left;
-  font-weight: 600;
-  color: #555;
-  margin-top: 10px;
-}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border 0.3s ease-in-out;
-}
-
-input:focus, select:focus {
-  border: 1px solid #007bff;
-  outline: none;
-}
-
-.button-group {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-  justify-content: center;
-  width: 100%;
-}
-
-button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 14px;
+/* Inputs & Dropdowns */
+.form-control, .form-select {
+  border: 2px solid #97CADB; /* Light Blue */
   transition: all 0.3s ease-in-out;
 }
 
-button:first-child {
-  background-color: #007bff;
-  color: white;
+.form-control:focus, .form-select:focus {
+  border-color: #018ABE;
+  box-shadow: 0 0 5px rgba(1, 138, 190, 0.3);
 }
 
-button:first-child:hover {
-  background-color: #0056b3;
+/* Buttons */
+.btn-primary {
+  background-color: #001B48;
+  border: none;
 }
 
-button.delete-btn {
-  background-color: #dc3545;
-  color: white;
+.btn-primary:hover {
+  background-color: #02457A;
 }
 
-button.delete-btn:hover {
+.btn-danger:hover {
   background-color: #a71d2a;
 }
 
-button:last-child {
-  background-color: #6c757d;
-  color: white;
+/* Cancel Button */
+.btn-secondary {
+  background-color: #97CADB;
+  color: #001B48;
 }
 
-button:last-child:hover {
-  background-color: #5a6268;
+.btn-secondary:hover {
+  background-color: #018ABE;
 }
 
 /* Responsive Design */
-@media (max-width: 500px) {
-  .dialog-container {
-    max-width: 90%;
-    padding: 15px;
+@media (max-width: 576px) {
+  .modal-dialog {
+    width: 90%;
   }
 
-  button {
-    font-size: 13px;
+  .btn {
+    font-size: 14px;
     padding: 10px;
   }
 }
