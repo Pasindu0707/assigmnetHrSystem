@@ -1,21 +1,17 @@
-/* General Modal Styling */
 .modal-content {
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Header */
 .modal-header {
   border-bottom: none;
 }
 
-/* Sections */
 .bg-light, .bg-success {
   padding: 10px;
   border-radius: 6px;
 }
 
-/* Close Button */
 .btn-secondary {
   background-color: #97CADB;
   color: #001B48;
@@ -25,7 +21,6 @@
   background-color: #018ABE;
 }
 
-/* Icons */
 .bi {
   margin-right: 5px;
 }

@@ -1,17 +1,14 @@
 <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center bg-overlay">
 
-  <!-- Back Button -->
   <button class="btn btn-outline-light position-absolute top-0 start-0 m-3 px-3 py-2 shadow" routerLink="/home">
     <i class="bi bi-arrow-left"></i> Back to Home
   </button>
 
-  <!-- Department Management Panel -->
   <div class="department-container shadow-lg p-5 bg-white rounded animate__animated animate__fadeIn">
 
     <h1 class="text-center text-dark mb-3"><i class="bi bi-building"></i> Department Management</h1>
     <p class="text-muted text-center">Manage and organize departments efficiently.</p>
 
-    <!-- Search & Add Department Buttons -->
     <div class="row g-3 mb-4">
       <div class="col-md-6">
         <input
@@ -29,7 +26,6 @@
       </div>
     </div>
 
-    <!-- Department Table -->
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <thead class="table-dark">
@@ -42,7 +38,17 @@
         <tbody>
         <tr *ngFor="let department of filteredDepartments">
           <td>{{ department.name }}</td>
-          <td>{{ department.description }}</td>
+          <td>
+            <span *ngIf="department.description.length > 50"
+                  matTooltip="{{ department.description }}"
+                  matTooltipPosition="above">
+              {{ department.description | slice:0:50 }}...
+            </span>
+            <span *ngIf="department.description.length <= 50">
+              {{ department.description }}
+            </span>
+          </td>
+
           <td>
             <button class="btn btn-sm btn-outline-primary" (click)="openDepartmentDialog(department, 'manage')">
               <i class="bi bi-pencil-square"></i> Manage

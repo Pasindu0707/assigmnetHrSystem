@@ -13,7 +13,7 @@ export const createEmployee = async (req, res) => {
             return res.status(404).json({ error: "Department not found" });
         }
 
-        // Create employee with profile picture (Base64)
+        // Create employee with profile picture
         const employee = new Employee({ name, job_title, department, status, profilePicture });
         await employee.save();
 

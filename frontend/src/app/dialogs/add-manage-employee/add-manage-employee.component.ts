@@ -19,8 +19,8 @@ export class AddManageEmployeeComponent {
   status: string = 'Active';
   actionType: string = '';
   departments: any[] = [];
-  profilePicture: string = '';  // Base64 string
-  defaultProfilePicture: string =  'sd';
+  profilePicture: string = '';
+  defaultProfilePicture: string =  "profilepicture.png";
 
   private employeeApiUrl = `${environment.BASE_API_URL}/api/employees`;
   private departmentApiUrl = `${environment.BASE_API_URL}/api/departments`;
@@ -64,14 +64,13 @@ export class AddManageEmployeeComponent {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.resizeImage(e.target.result, 300, 300, (resizedImage) => {
-          this.profilePicture = resizedImage; // ✅ Use compressed image
+          this.profilePicture = resizedImage;
         });
       };
       reader.readAsDataURL(file);
     }
   }
 
-  /** Resize Image to Reduce Size */
   resizeImage(base64Str: string, maxWidth: number, maxHeight: number, callback: (resized: string) => void) {
     const img = new Image();
     img.src = base64Str;
@@ -79,7 +78,6 @@ export class AddManageEmployeeComponent {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d")!;
 
-      // Set max dimensions
       let width = img.width;
       let height = img.height;
 
@@ -92,13 +90,11 @@ export class AddManageEmployeeComponent {
         height = maxHeight;
       }
 
-      // Resize image
       canvas.width = width;
       canvas.height = height;
       ctx.drawImage(img, 0, 0, width, height);
 
-      // Convert back to Base64
-      callback(canvas.toDataURL("image/jpeg", 0.7)); // 70% Quality
+      callback(canvas.toDataURL("image/jpeg", 0.7));
     };
   }
 
@@ -109,7 +105,7 @@ export class AddManageEmployeeComponent {
       job_title: this.jobTitle,
       department: this.departmentId,
       status: this.status,
-      profilePicture: this.profilePicture  // Include Base64 image
+      profilePicture: this.profilePicture
     };
 
     if (this.actionType === 'add') {

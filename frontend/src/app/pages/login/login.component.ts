@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../app.config';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  private apiUrl = `${environment.BASE_API_URL}/auth`; // ✅ Use the base API URL
+  private apiUrl = `${environment.BASE_API_URL}/auth`;
 
   constructor(private http: HttpClient,
               private toastr: ToastrService,

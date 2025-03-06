@@ -1,8 +1,7 @@
 <div class="modal fade show d-block" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Adjusted Width -->
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content shadow-lg border-0">
 
-      <!-- Modal Header -->
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title">
           <i class="bi bi-person-plus"></i>
@@ -11,30 +10,25 @@
         <button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close"></button>
       </div>
 
-      <!-- Modal Body -->
       <div class="modal-body">
 
-        <!-- Profile Picture Upload -->
         <div class="text-center mb-3">
-          <img [src]="profilePicture || defaultProfilePicture" class="rounded-circle img-thumbnail" width="120" height="120" />
+          <img [src]="profilePicture || defaultProfilePicture" class="rounded-circle img-thumbnail" width="120"
+               height="120"/>
           <input type="file" class="form-control mt-2" (change)="onFileSelected($event)" accept="image/*">
         </div>
 
-        <!-- Form Fields Grid Layout -->
         <div class="row">
-          <!-- Employee Name -->
           <div class="col-md-6 mb-3">
             <label class="form-label"><i class="bi bi-person"></i> Name</label>
-            <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter employee name" required />
+            <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter employee name" required/>
           </div>
 
-          <!-- Job Title -->
           <div class="col-md-6 mb-3">
             <label class="form-label"><i class="bi bi-briefcase"></i> Job Title</label>
-            <input type="text" class="form-control" [(ngModel)]="jobTitle" placeholder="Enter job title" required />
+            <input type="text" class="form-control" [(ngModel)]="jobTitle" placeholder="Enter job title" required/>
           </div>
 
-          <!-- Department Dropdown -->
           <div class="col-md-6 mb-3">
             <label class="form-label"><i class="bi bi-building"></i> Department</label>
             <select class="form-select" [(ngModel)]="departmentId">
@@ -42,7 +36,6 @@
             </select>
           </div>
 
-          <!-- Status -->
           <div class="col-md-6 mb-3">
             <label class="form-label"><i class="bi bi-toggle-on"></i> Status</label>
             <select class="form-select" [(ngModel)]="status">
@@ -54,7 +47,6 @@
 
       </div>
 
-      <!-- Modal Footer (Buttons) -->
       <div class="modal-footer d-flex justify-content-between">
         <button class="btn btn-primary w-100" (click)="saveEmployee()">
           <i class="bi bi-save"></i>

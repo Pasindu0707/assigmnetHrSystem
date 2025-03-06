@@ -2,7 +2,6 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow-lg border-0">
 
-      <!-- Modal Header -->
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title">
           <i class="bi bi-building"></i>
@@ -11,24 +10,21 @@
         <button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close"></button>
       </div>
 
-      <!-- Modal Body -->
       <div class="modal-body">
 
-        <!-- Department Name -->
         <div class="mb-3">
           <label class="form-label"><i class="bi bi-tag"></i> Department Name</label>
-          <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter department name" required />
+          <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter department name" required/>
         </div>
 
-        <!-- Department Description -->
         <div class="mb-3">
           <label class="form-label"><i class="bi bi-pencil-square"></i> Description</label>
-          <textarea class="form-control" rows="3" [(ngModel)]="description" placeholder="Enter description" required></textarea>
+          <textarea class="form-control" rows="3" [(ngModel)]="description" placeholder="Enter description"
+                    required></textarea>
         </div>
 
       </div>
 
-      <!-- Modal Footer (Buttons) -->
       <div class="modal-footer d-flex justify-content-between">
 
         <button class="btn btn-primary w-100" (click)="saveDepartment()">

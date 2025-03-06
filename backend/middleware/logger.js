@@ -3,8 +3,8 @@ import { v4 as uuid } from 'uuid';
 import fs from 'fs';
 import { promises as fsPromises } from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url'; // Import for __dirname
-import { dirname } from 'path'; // Import for dirname
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // Get the current file name and directory name
 const __filename = fileURLToPath(import.meta.url);

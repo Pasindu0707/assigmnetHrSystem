@@ -1,4 +1,4 @@
-import {User} from '../models/User.js'; // Ensure to add .js extension for ESM
+import {User} from '../models/User.js';
 import jwt from 'jsonwebtoken';
 
 const handleRefreshToken = async (req, res) => {
@@ -19,7 +19,7 @@ const handleRefreshToken = async (req, res) => {
     // Evaluate JWT
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
         if (err || foundUser.username !== decoded.username) {
-            return res.status(403).json({ "Message": "Something went wrong" }); // Changed to 403 for consistency
+            return res.status(403).json({ "Message": "Something went wrong" });
         }
 
         const accessToken = jwt.sign(
@@ -36,4 +36,4 @@ const handleRefreshToken = async (req, res) => {
     });
 };
 
-export { handleRefreshToken }; // Exporting using named export
+export { handleRefreshToken };

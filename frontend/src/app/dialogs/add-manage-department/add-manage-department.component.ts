@@ -31,7 +31,6 @@ export class AddManageDepartmentComponent {
     this.actionType = data.action;
   }
 
-  /** Get the authorization headers */
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
     return {
@@ -42,7 +41,6 @@ export class AddManageDepartmentComponent {
     };
   }
 
-  /** Add or Update department */
   saveDepartment() {
     const departmentData = {
       name: this.name,
@@ -60,7 +58,6 @@ export class AddManageDepartmentComponent {
     }
   }
 
-  /** Delete department */
   deleteDepartment() {
     if (confirm(`Are you sure you want to delete the department: ${this.name}?`)) {
       this.http.delete(`${this.apiUrl}/${this.data.department._id}`, this.getAuthHeaders()).subscribe(() => {

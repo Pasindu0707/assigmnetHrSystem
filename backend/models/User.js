@@ -1,4 +1,3 @@
-// User.js
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
@@ -21,5 +20,4 @@ const userSchema = new mongoose.Schema({
     refreshToken: String
 });
 
-// Named export of the User model
 export const User = mongoose.model('User', userSchema);
