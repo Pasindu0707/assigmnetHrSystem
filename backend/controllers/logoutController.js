@@ -1,10 +1,7 @@
-import { User } from '../models/User.js'; // Ensure to add .js extension for ESM
-import jwt from 'jsonwebtoken'; // If you're not using jwt in this function, you can remove this import
+import { User } from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 const handleLogout = async (req, res) => {
-    // User should delete the accessToken from front end
-    // localStorage.setItem('token', '');
-
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(204);
 
@@ -14,7 +11,7 @@ const handleLogout = async (req, res) => {
 
     if (!foundUser) {
         res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
-        return res.status(403).send('Forbidden'); // Optional: Send a message for clarity
+        return res.status(403).send('Forbidden');
     }
 
     // Delete refreshToken in db

@@ -6,13 +6,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddManageDepartmentComponent } from '../../dialogs/add-manage-department/add-manage-department.component';
 import { environment } from '../../app.config';
+import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-department-management',
   standalone: true,
   templateUrl: './department-management.component.html',
   styleUrls: ['./department-management.component.css'],
-  imports: [RouterModule, CommonModule, FormsModule]
+  imports: [RouterModule, CommonModule, FormsModule, MatTooltip]
 })
 export class DepartmentManagementComponent {
   private http = inject(HttpClient);
@@ -27,7 +28,6 @@ export class DepartmentManagementComponent {
     this.fetchDepartments();
   }
 
-  /** Get the authorization headers */
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
     return {
@@ -38,22 +38,19 @@ export class DepartmentManagementComponent {
     };
   }
 
-  /** Fetch departments from API */
   fetchDepartments() {
     this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {
       this.departments = response;
-      this.filteredDepartments = response; // Initialize filtered list
+      this.filteredDepartments = response;
     });
   }
 
-  /** Filter departments based on search query */
   onSearchChange() {
     this.filteredDepartments = this.departments.filter(dept =>
       dept.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
   }
 
-  /** Open the department dialog */
   openDepartmentDialog(department: any | null, action: string) {
     const dialogRef = this.dialog.open(AddManageDepartmentComponent, {
       width: '500px',

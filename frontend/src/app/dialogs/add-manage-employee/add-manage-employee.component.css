@@ -1,36 +1,32 @@
-/* General Modal Styling */
 .modal-dialog {
-  max-width: 800px; /* Ensures modal width is respected */
+  max-width: 800px;
 }
 
 .modal-content {
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  max-height: 90vh; /* Prevents modal from getting too tall */
-  overflow-y: auto; /* Enables scroll if content overflows */
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-/* Header */
 .modal-header {
   border-bottom: none;
-  padding: 12px 20px; /* Reduce padding */
+  padding: 12px 20px;
 }
 
 .modal-title {
-  font-size: 18px; /* Slightly smaller title */
+  font-size: 18px;
 }
 
-/* Modal Body */
 .modal-body {
-  padding: 15px 20px; /* Reduced padding */
+  padding: 15px 20px;
 }
 
-/* Inputs & Dropdowns */
 .form-control, .form-select {
-  border: 2px solid #97CADB; /* Light Blue */
+  border: 2px solid #97CADB;
   transition: all 0.3s ease-in-out;
-  padding: 8px; /* Reduced padding */
-  font-size: 14px; /* Adjusted font size */
+  padding: 8px;
+  font-size: 14px;
 }
 
 .form-control:focus, .form-select:focus {
@@ -38,7 +34,6 @@
   box-shadow: 0 0 4px rgba(1, 138, 190, 0.3);
 }
 
-/* Profile Picture Upload */
 .text-center img {
   width: 100px;
   height: 100px;
@@ -53,10 +48,9 @@ input[type="file"] {
   text-align: center;
 }
 
-/* Buttons */
 .btn {
   font-size: 14px;
-  padding: 8px 12px; /* Reduced padding */
+  padding: 8px 12px;
 }
 
 .btn-primary {
@@ -72,7 +66,6 @@ input[type="file"] {
   background-color: #a71d2a;
 }
 
-/* Cancel Button */
 .btn-secondary {
   background-color: #97CADB;
   color: #001B48;
@@ -82,12 +75,11 @@ input[type="file"] {
   background-color: #018ABE;
 }
 
-/* Modal Footer */
 .modal-footer {
   display: flex;
   justify-content: space-between;
-  padding: 12px; /* Reduced padding */
-  flex-wrap: wrap; /* Adjust layout if needed */
+  padding: 12px;
+  flex-wrap: wrap;
 }
 
 .modal-footer .btn {
@@ -116,7 +108,7 @@ input[type="file"] {
 
   .btn {
     font-size: 13px;
-    padding: 7px 10px; /* Further reduced padding */
+    padding: 7px 10px;
   }
 
   .form-control, .form-select {

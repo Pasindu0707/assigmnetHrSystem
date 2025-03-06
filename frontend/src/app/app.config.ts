@@ -11,8 +11,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(FormsModule, HttpClientModule),
-    provideAnimations(),  // ✅ Required for Toastr and Angular animations
-    provideToastr()        // ✅ Adds Toastr functionality
+    provideAnimations(),
+    provideToastr()
   ]
 };
 

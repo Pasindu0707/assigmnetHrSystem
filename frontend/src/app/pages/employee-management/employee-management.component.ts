@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { environment } from '../../app.config';
-import { AddManageEmployeeComponent } from '../../dialogs/add-manage-employee/add-manage-employee.component';
+import {Component} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {environment} from '../../app.config';
+import {AddManageEmployeeComponent} from '../../dialogs/add-manage-employee/add-manage-employee.component';
 
 @Component({
   selector: 'app-employee-management',
@@ -23,7 +23,7 @@ export class EmployeeManagementComponent {
   totalPages: number = 1;
   searchTimeout: any;
   totalEmployees: number = 0;
-  defaultProfileImage: string = 'jand'
+  defaultProfileImage: string = "profilepicture.png"
 
   private apiUrl = `${environment.BASE_API_URL}/api/employees`;
 
@@ -31,7 +31,6 @@ export class EmployeeManagementComponent {
     this.fetchEmployees();
   }
 
-  /** Get the authorization headers */
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
     return {
@@ -42,7 +41,6 @@ export class EmployeeManagementComponent {
     };
   }
 
-  /** Fetch all employees */
   fetchEmployees() {
     this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {
       this.employees = response.map(emp => ({
@@ -56,14 +54,11 @@ export class EmployeeManagementComponent {
     });
   }
 
-
-  /** Calculate pagination */
   calculatePagination() {
     this.totalPages = Math.ceil(this.employees.length / this.pageSize);
     this.updatePaginatedEmployees();
   }
 
-  /** Update paginated list */
   updatePaginatedEmployees() {
     const start = (this.currentPage - 1) * this.pageSize;
     const end = start + this.pageSize;
@@ -114,7 +109,7 @@ export class EmployeeManagementComponent {
   openEmployeeDialog(employeeData: any, action: 'add' | 'manage') {
     const dialogRef = this.dialog.open(AddManageEmployeeComponent, {
       width: '800px',
-      data: { employee: employeeData, action: action }
+      data: {employee: employeeData, action: action}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -124,7 +119,6 @@ export class EmployeeManagementComponent {
     });
   }
 
-  /** Navigate back to home */
   navigateToHome() {
     this.router.navigate(['/home']);
   }
@@ -132,16 +126,4 @@ export class EmployeeManagementComponent {
   getEmployeeLogs() {
     this.router.navigate(['/activityLog']);
   }
-
-  // /** Convert Image to Base64 */
-  // handleFileInput(event: any, employee: any) {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       employee.profile_picture = reader.result as string;
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 }

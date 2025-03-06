@@ -1,17 +1,14 @@
-/* General Modal Styling */
 .modal-content {
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Header */
 .modal-header {
   border-bottom: none;
 }
 
-/* Inputs & Textarea */
 .form-control {
-  border: 2px solid #97CADB; /* Light Blue */
+  border: 2px solid #97CADB;
   transition: all 0.3s ease-in-out;
 }
 
@@ -20,7 +17,6 @@
   box-shadow: 0 0 5px rgba(1, 138, 190, 0.3);
 }
 
-/* Buttons */
 .btn-primary {
   background-color: #001B48;
   border: none;
@@ -34,7 +30,6 @@
   background-color: #a71d2a;
 }
 
-/* Cancel Button */
 .btn-secondary {
   background-color: #97CADB;
   color: #001B48;

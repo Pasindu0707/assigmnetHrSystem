@@ -1,11 +1,9 @@
-/* Full-page background */
 .bg-overlay {
   background: linear-gradient(135deg, #001B48, #018ABE);
   background-size: cover;
   width: 100%;
 }
 
-/* Activity Log Container */
 .activity-log-container {
   width: 90%;
   max-width: 1000px;
@@ -28,7 +26,6 @@
   background-color: #17a2b8;
 }
 
-/* Back Button */
 .back-btn {
   position: absolute;
   top: 20px;
@@ -48,13 +45,11 @@
   background-color: #018ABE;
 }
 
-/* Table Styling */
 .table-responsive {
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Pagination */
 .pagination-controls {
   display: flex;
   align-items: center;
@@ -62,6 +57,7 @@
   gap: 10px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .activity-log-container {
     width: 95%;

@@ -2,7 +2,6 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow-lg border-0">
 
-      <!-- Modal Header -->
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title">
           <i class="bi bi-clock-history"></i> Activity Log Details
@@ -10,14 +9,11 @@
         <button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close"></button>
       </div>
 
-      <!-- Modal Body -->
       <div class="modal-body">
 
-        <!-- Action & Timestamp -->
         <p><strong><i class="bi bi-clipboard-check"></i> Action:</strong> {{ log.action }}</p>
         <p><strong><i class="bi bi-calendar"></i> Timestamp:</strong> {{ log.timestamp | date:'medium' }}</p>
 
-        <!-- Before Changes -->
         <div *ngIf="log.changes.before" class="mb-3 p-3 bg-light rounded border">
           <h5 class="text-danger"><i class="bi bi-x-circle"></i> Before</h5>
           <p><strong>Name:</strong> {{ log.changes.before.name || 'N/A' }}</p>
@@ -26,7 +22,6 @@
           <p><strong>Status:</strong> {{ log.changes.before.status || 'N/A' }}</p>
         </div>
 
-        <!-- After Changes -->
         <div *ngIf="log.changes.after" class="p-3 bg-success bg-opacity-10 rounded border">
           <h5 class="text-success"><i class="bi bi-check-circle"></i> After</h5>
           <p><strong>Name:</strong> {{ log.changes.after.name || 'N/A' }}</p>
@@ -37,7 +32,6 @@
 
       </div>
 
-      <!-- Modal Footer (Buttons) -->
       <div class="modal-footer">
         <button class="btn btn-secondary w-100" (click)="closeDialog()">
           <i class="bi bi-x-circle"></i> Close

@@ -10,7 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'HR System';
-
+  imagePath = 'assets/profilepicture.png';
   @HostListener('window:beforeunload', ['$event'])
   clearLocalStorage(event: Event) {
     localStorage.removeItem('token');
