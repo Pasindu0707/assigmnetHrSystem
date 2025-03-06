@@ -1,2 +1,4 @@
 20250304	23:47:31	fc55ae49-d6ef-4ab3-a283-7d1973c4f2a3	Error: Multipart: Boundary not found	POST	/api/employees	undefined
 20250304	23:49:43	c6850bee-bc37-4c4d-bb55-43db7e999d22	Error: ENOENT: no such file or directory, open 'C:\Users\Pasindu Fernando\Desktop\Edhiriya IT\backend\uploads\1741112383672-download.png'	POST	/api/employees	undefined
+20250306	16:46:54	b6c255c1-db26-41d8-9ed4-d2ef98b4eaa1	PayloadTooLargeError: request entity too large	PUT	/api/employees/67c8c185b14c696192edfd0b	http://localhost:4200
+20250306	16:50:09	e71533f6-5d33-4ff1-9d52-5f10b914634e	PayloadTooLargeError: request entity too large	PUT	/api/employees/67c8c185b14c696192edfd0b	http://localhost:4200

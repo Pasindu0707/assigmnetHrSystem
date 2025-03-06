@@ -33,7 +33,8 @@ app.options('*', cors(corsOptions));
 // Adding middleware
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 //Importing the routes
 import subdirRoutes from './routes/subdir.js';

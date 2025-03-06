@@ -5,7 +5,7 @@ import ActivityLog from "../../models/ActivityLog.js";
 // Create a new employee
 export const createEmployee = async (req, res) => {
     try {
-        const { name, job_title, department, status } = req.body;
+        const { name, job_title, department, status, profilePicture } = req.body;
 
         // Validate department
         const departmentExists = await Department.findById(department);
@@ -13,8 +13,8 @@ export const createEmployee = async (req, res) => {
             return res.status(404).json({ error: "Department not found" });
         }
 
-        // Create employee (without profile picture)
-        const employee = new Employee({ name, job_title, department, status });
+        // Create employee with profile picture (Base64)
+        const employee = new Employee({ name, job_title, department, status, profilePicture });
         await employee.save();
 
         res.status(201).json(employee);
@@ -31,7 +31,11 @@ export const updateEmployee = async (req, res) => {
             return res.status(404).json({ error: "Employee not found" });
         }
 
-        const updatedEmployee = await Employee.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedEmployee = await Employee.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            { new: true }
+        );
 
         // Log changes in the activity log
         const logEntry = new ActivityLog({

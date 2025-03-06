@@ -39,6 +39,7 @@
       <table class="table table-striped table-hover">
         <thead class="table-dark">
         <tr>
+          <th>Profile</th>
           <th>Name</th>
           <th>Job Title</th>
           <th>Department</th>
@@ -48,18 +49,23 @@
         </thead>
         <tbody>
         <tr *ngFor="let employee of paginatedEmployees">
+          <td>
+            <img [src]="employee.profilePicture || '../../assets/profilepicture.png'" alt="Profile" class="profile-img"/>
+
+          </td>
           <td>{{ employee.name }}</td>
           <td>{{ employee.job_title }}</td>
           <td>{{ employee.department.name }}</td>
           <td>
-              <span class="badge" [ngClass]="employee.status === 'Active' ? 'bg-success' : 'bg-secondary'">
-                {{ employee.status }}
-              </span>
+            <span class="badge" [ngClass]="employee.status === 'Active' ? 'bg-success' : 'bg-secondary'">
+              {{ employee.status }}
+            </span>
           </td>
           <td>
             <button class="btn btn-sm btn-outline-primary" (click)="openEmployeeDialog(employee, 'manage')">
               <i class="bi bi-pencil-square"></i> Manage
             </button>
+<!--            <input type="file" (change)="handleFileInput($event, employee)" accept="image/*" class="form-control mt-2">-->
           </td>
         </tr>
         </tbody>

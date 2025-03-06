@@ -1,26 +1,64 @@
 /* General Modal Styling */
+.modal-dialog {
+  max-width: 800px; /* Ensures modal width is respected */
+}
+
 .modal-content {
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  max-height: 90vh; /* Prevents modal from getting too tall */
+  overflow-y: auto; /* Enables scroll if content overflows */
 }
 
 /* Header */
 .modal-header {
   border-bottom: none;
+  padding: 12px 20px; /* Reduce padding */
+}
+
+.modal-title {
+  font-size: 18px; /* Slightly smaller title */
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 15px 20px; /* Reduced padding */
 }
 
 /* Inputs & Dropdowns */
 .form-control, .form-select {
   border: 2px solid #97CADB; /* Light Blue */
   transition: all 0.3s ease-in-out;
+  padding: 8px; /* Reduced padding */
+  font-size: 14px; /* Adjusted font size */
 }
 
 .form-control:focus, .form-select:focus {
   border-color: #018ABE;
-  box-shadow: 0 0 5px rgba(1, 138, 190, 0.3);
+  box-shadow: 0 0 4px rgba(1, 138, 190, 0.3);
+}
+
+/* Profile Picture Upload */
+.text-center img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+input[type="file"] {
+  font-size: 13px;
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
 }
 
 /* Buttons */
+.btn {
+  font-size: 14px;
+  padding: 8px 12px; /* Reduced padding */
+}
+
 .btn-primary {
   background-color: #001B48;
   border: none;
@@ -44,14 +82,50 @@
   background-color: #018ABE;
 }
 
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px; /* Reduced padding */
+  flex-wrap: wrap; /* Adjust layout if needed */
+}
+
+.modal-footer .btn {
+  flex: 1;
+  min-width: 100px;
+  margin: 3px;
+}
+
 /* Responsive Design */
 @media (max-width: 576px) {
   .modal-dialog {
-    width: 90%;
+    width: 95%;
+  }
+
+  .modal-content {
+    max-height: 85vh;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    width: 100%;
   }
 
   .btn {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 13px;
+    padding: 7px 10px; /* Further reduced padding */
+  }
+
+  .form-control, .form-select {
+    font-size: 13px;
+    padding: 7px;
+  }
+
+  .text-center img {
+    width: 80px;
+    height: 80px;
   }
 }

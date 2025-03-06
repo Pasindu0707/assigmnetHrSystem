@@ -3,13 +3,23 @@
   background: linear-gradient(to right, rgba(2, 69, 122, 0.85), rgba(1, 138, 190, 0.85)),
   url('https://source.unsplash.com/1600x900/?business,office') no-repeat center center;
   background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 /* Employee Container */
 .employee-container {
-  max-width: 900px;
+  max-width: 1000px;
+  width: 95%;
   text-align: center;
   border-radius: 12px;
+  background: white;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Back Button */
@@ -23,7 +33,7 @@
   color: #001B48;
 }
 
-/* Buttons */
+/* Action Buttons */
 .btn {
   transition: all 0.3s ease-in-out;
 }
@@ -36,26 +46,65 @@
   background-color: #018ABE;
 }
 
+/* Search & Action Buttons Container */
+.row.g-3 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.col-md-6,
+.col-md-3 {
+  flex: 1;
+  min-width: 200px;
+}
+
 /* Table Styling */
 .table {
   border-radius: 10px;
   overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f8f9fa;
 }
 
+th, td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+th {
+  background-color: #001B48 !important;
+  color: white !important;
+}
+
+td img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* Badges */
 .badge {
   font-size: 14px;
   padding: 6px 12px;
 }
 
 /* Pagination */
+.pagination {
+  margin-top: 20px;
+}
+
 .pagination .page-item .page-link {
   color: #001B48;
   font-weight: bold;
   transition: all 0.3s ease-in-out;
+  border-radius: 8px;
 }
 
 .pagination .page-item .page-link:hover {
@@ -68,17 +117,48 @@
   cursor: not-allowed;
 }
 
+/* File Upload Styling */
+input[type="file"] {
+  display: block;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .employee-container {
     width: 90%;
+    padding: 20px;
   }
 
   .btn {
     font-size: 14px;
+    padding: 8px 12px;
   }
 
   .table {
     font-size: 14px;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .pagination .page-item .page-link {
+    font-size: 13px;
+    padding: 6px 10px;
   }
 }

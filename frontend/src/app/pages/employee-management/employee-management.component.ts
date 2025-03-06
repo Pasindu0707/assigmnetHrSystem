@@ -23,6 +23,7 @@ export class EmployeeManagementComponent {
   totalPages: number = 1;
   searchTimeout: any;
   totalEmployees: number = 0;
+  defaultProfileImage: string = 'jand'
 
   private apiUrl = `${environment.BASE_API_URL}/api/employees`;
 
@@ -44,11 +45,17 @@ export class EmployeeManagementComponent {
   /** Fetch all employees */
   fetchEmployees() {
     this.http.get<any[]>(this.apiUrl, this.getAuthHeaders()).subscribe((response) => {
-      this.employees = response;
-      this.totalEmployees = response.length
+      this.employees = response.map(emp => ({
+        ...emp,
+        profilePicture: emp.profilePicture && emp.profilePicture.startsWith('data:image')
+          ? emp.profilePicture
+          : this.defaultProfileImage
+      }));
+      this.totalEmployees = response.length;
       this.calculatePagination();
     });
   }
+
 
   /** Calculate pagination */
   calculatePagination() {
@@ -92,15 +99,21 @@ export class EmployeeManagementComponent {
 
     this.http.get<any[]>(`${this.apiUrl}/search?query=${this.searchQuery}`, this.getAuthHeaders())
       .subscribe((response) => {
-        this.employees = response;
+        this.employees = response.map(emp => ({
+          ...emp,
+          profilePicture: emp.profilePicture && emp.profilePicture.startsWith('data:image')
+            ? emp.profilePicture
+            : this.defaultProfileImage
+        }));
         this.currentPage = 1;
         this.calculatePagination();
       });
   }
 
+
   openEmployeeDialog(employeeData: any, action: 'add' | 'manage') {
     const dialogRef = this.dialog.open(AddManageEmployeeComponent, {
-      width: '500px',
+      width: '800px',
       data: { employee: employeeData, action: action }
     });
 
@@ -115,8 +128,20 @@ export class EmployeeManagementComponent {
   navigateToHome() {
     this.router.navigate(['/home']);
   }
+
   getEmployeeLogs() {
     this.router.navigate(['/activityLog']);
   }
 
+  // /** Convert Image to Base64 */
+  // handleFileInput(event: any, employee: any) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       employee.profile_picture = reader.result as string;
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 }

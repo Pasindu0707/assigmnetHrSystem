@@ -19,6 +19,8 @@ export class AddManageEmployeeComponent {
   status: string = 'Active';
   actionType: string = '';
   departments: any[] = [];
+  profilePicture: string = '';  // Base64 string
+  defaultProfilePicture: string =  'sd';
 
   private employeeApiUrl = `${environment.BASE_API_URL}/api/employees`;
   private departmentApiUrl = `${environment.BASE_API_URL}/api/departments`;
@@ -29,12 +31,13 @@ export class AddManageEmployeeComponent {
     private http: HttpClient
   ) {
     this.fetchDepartments();
-    
+
     if (data.action === 'manage') {
       this.name = data.employee.name;
       this.jobTitle = data.employee.job_title;
       this.departmentId = data.employee.department._id;
       this.status = data.employee.status;
+      this.profilePicture = data.employee.profilePicture || this.defaultProfilePicture;
     }
     this.actionType = data.action;
   }
@@ -55,12 +58,58 @@ export class AddManageEmployeeComponent {
     };
   }
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.resizeImage(e.target.result, 300, 300, (resizedImage) => {
+          this.profilePicture = resizedImage; // ✅ Use compressed image
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  /** Resize Image to Reduce Size */
+  resizeImage(base64Str: string, maxWidth: number, maxHeight: number, callback: (resized: string) => void) {
+    const img = new Image();
+    img.src = base64Str;
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d")!;
+
+      // Set max dimensions
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth) {
+        height = Math.round((height *= maxWidth / width));
+        width = maxWidth;
+      }
+      if (height > maxHeight) {
+        width = Math.round((width *= maxHeight / height));
+        height = maxHeight;
+      }
+
+      // Resize image
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Convert back to Base64
+      callback(canvas.toDataURL("image/jpeg", 0.7)); // 70% Quality
+    };
+  }
+
+
   saveEmployee() {
     const employeeData = {
       name: this.name,
       job_title: this.jobTitle,
       department: this.departmentId,
-      status: this.status
+      status: this.status,
+      profilePicture: this.profilePicture  // Include Base64 image
     };
 
     if (this.actionType === 'add') {
